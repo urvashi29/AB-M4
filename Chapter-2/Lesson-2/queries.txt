@@ -1,0 +1,64 @@
+show databases;
+use agile;
+
+db.createCollection("employees");
+show collections;
+
+INSERT 
+traditional methos: insert()
+db.employees.insert({"name":"alina", "age", "24", "city": "pune"});
+
+db.employees.insertOne({"name": "alex", "age": "20", "city": "banglore", "email": "alex@gmail.com"})
+db.employees.insertMany([{"name": "harry", "age":"21", "city": "banglore"}, {"name": "sid", }, {}])
+
+create id from you end
+db.employees.insertOne({"name":"alaya", "age":"20", "id": "1"})
+
+create _id value from your end
+db.employees.insertOne({"name":"alisha", "age":"23", "_id": "2"})
+
+duplicate _id is not allowed
+ db.employees.insertOne({"name":"alisha", "age":"23", "_id": "2"})
+
+
+
+
+RETRIEVE/FIND
+db.employees.find()
+
+db.employees.findOne()
+
+db.employees.find({}, {"name": 1, "age": 1, "_id": 0})
+
+sopecific value
+db.employees.find({"city": "banglore"})
+db.employees.find({"city": "banglore"}, {"name": 1})
+
+for array
+db.Movies.find({genres: ["Fantasy", "Horror"]})
+
+db.Movies.find({genres: ["Fantasy", "Horror"], "id": 1})
+
+mutiple values in fields
+db.employees.find({"name": {$in: ["alina", "alex"]}})
+
+greater and less than 
+db.employees.find({"age": {$gt: "21"}}, {"name": 1})
+db.employees.find({"age": {$gte: "21"}}, {"name": 1})
+db.employees.find({"age": {$lte: "21"}}, {"name": 1}
+db.employees.find({"age": {$lt: "21"}}, {"name": 1}
+
+
+db.employees.find().count()
+
+UPDATE 
+db.employees.updateOne({"_id": "2"}, {$set: {"age": "24"}})
+db.employees.updateMany({"city": "banglore"}, {$set: {"age": "25"}})
+
+
+DELETE 
+ db.employees.deleteOne({"name": "alina"})
+db.employees.deleteMany({"age": "25"})
+
+db.employees.deleteMany({"name": {$in: ["sid", "alisha"]}})
+
