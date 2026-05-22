@@ -94,3 +94,6 @@ console.log(resolvedUrl);
 // console.log(chalk.green("world"));
 // console.log(chalk.blue("welcome to nodejs"));
 // console.log(chalk.yellow("chalk is used to add color in terminal"));
+
+const colors = require("mynodemodule");
+console.log(colors.getRandomColor());
