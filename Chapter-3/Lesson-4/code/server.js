@@ -90,3 +90,22 @@ app.delete("/:id", (req, res) => {
 // app.patch("/", () => {
 
 // })
+
+app.put("/employees/:id", (req, res) => {
+  let employee = req.body;
+
+  let id = req.params.id;
+  person.splice(
+    person.findIndex((e) => e.id == id),
+    1,
+  );
+  person.push(employee);
+  res.status(201).json({ data: employee });
+});
+
+// app.patch("/employees/:id", (req, res) => {
+//   let id = req.params.id;
+
+//   let emp = req.body;
+//   // find the record and update the property
+// });
